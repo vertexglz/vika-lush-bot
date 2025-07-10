@@ -129,10 +129,15 @@ async def enter_name(message: types.Message, state: FSMContext):
     if message.text == "/start":
         await cmd_start(message, state)
         return
-    if not message.text or len(message.text.strip()) < 2:
-        await message.answer("Пожалуйста, введите корректное имя (минимум 2 буквы).", reply_markup=BACK_KB)
+    if not message.text:
+        await message.answer("Пожалуйста, введите имя только буквами (русский или латиница, минимум 2 буквы, можно дефис и пробел).", reply_markup=BACK_KB)
         return
-    await state.update_data(name=message.text.strip())
+    name = message.text.strip()
+    # Разрешаем только буквы русского/латинского алфавита, дефис и пробел
+    if not re.match(r'^[A-Za-zА-Яа-яЁё\- ]{2,}$', name):
+        await message.answer("Пожалуйста, введите имя только буквами (русский или латиница, минимум 2 буквы, можно дефис и пробел).", reply_markup=BACK_KB)
+        return
+    await state.update_data(name=name)
     await state.set_state(BookingStates.choosing_date)
     await message.answer("Выберите дату:", reply_markup=get_dates_keyboard())
 
