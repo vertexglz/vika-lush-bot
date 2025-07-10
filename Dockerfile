@@ -14,15 +14,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Указываем переменные окружения (можно переопределить через docker run -e ...)
-ENV BOT_TOKEN="your_token_here"
+ENV BOT_TOKEN="7680781537:AAFe-SVB9L_6M52CtkRuJcVYwEaoudb3aYI"
 ENV DB_HOST="localhost"
 ENV DB_PORT="5432"
 ENV DB_NAME="chatbot_vika"
-ENV DB_USER="pavelveretennikov"
-ENV DB_PASS="your_password_here"
+ENV DB_USER=
+ENV DB_PASS=
 
 # Открываем порт (если вдруг понадобится для webhook)
 EXPOSE 8080
 
 # Команда запуска (замени main.py на свой файл, если нужно)
-CMD ["python", "main.py"] 
+CMD ["python", "bot.py"] 
