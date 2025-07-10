@@ -12,6 +12,7 @@ import datetime
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 import logging
 from sqlalchemy import String
+from aiogram.types import Update
 
 ADMIN_IDS = [823862864]  # Telegram ID администратора
 
@@ -21,8 +22,8 @@ bot = Bot(token=str(BOT_TOKEN))
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
 @dp.errors()
-async def error_handler(update, exception):
-    logging.error(f"Ошибка: {exception} при обработке {update}")
+async def error_handler(event: Update, exception: Exception):
+    logging.error(f"Ошибка: {exception} при обработке {event}")
     return True
 
 class BookingStates(StatesGroup):

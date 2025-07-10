@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncAttrs, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import Integer, String, DateTime, ForeignKey, Boolean
+from sqlalchemy import Integer, String, Date, DateTime, ForeignKey, Boolean
 import datetime
 from config import DATABASE_URL
 
@@ -21,7 +21,7 @@ class User(Base):
 class ScheduleSlot(Base):
     __tablename__ = 'schedule_slots'
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    date: Mapped[datetime.date] = mapped_column(DateTime, nullable=False)
+    date: Mapped[datetime.date] = mapped_column(Date, nullable=False)
     time: Mapped[str] = mapped_column(String(5), nullable=False)  # HH:MM
     is_booked: Mapped[bool] = mapped_column(Boolean, default=False)
     booking = relationship('Booking', back_populates='slot', uselist=False)

@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BOT_TOKEN = "7680781537:AAFyxeFSYngQvyGC4Lw1fbgBsSIWZjuBP_I"
+BOT_TOKEN = "7680781537:AAHcDjNuvvNyP2BYxJwyfeXeAlksH_KAPEs"
 DB_HOST = os.getenv('DB_HOST', 'localhost')
 DB_PORT = os.getenv('DB_PORT', '5432')
 DB_NAME = os.getenv('DB_NAME', 'chatbot_vika')
