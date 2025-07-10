@@ -13,11 +13,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Копируем все файлы проекта
 COPY . .
 
-# Указываем переменные окружения (можно переопределить через docker run -e ...)
-ENV BOT_TOKEN="7680781537:AAFyxeFSYngQvyGC4Lw1fbgBsSIWZjuBP_I"
-ENV DB_HOST="localhost"
-ENV DB_PORT="5432"
-ENV DB_NAME="chatbot_vika"
+# Оставляем только имена переменных, значения задаются при запуске контейнера!
+ENV BOT_TOKEN=""
+ENV DB_HOST=""
+ENV DB_PORT=""
+ENV DB_NAME=""
 ENV DB_USER=""
 ENV DB_PASS=""
 
